@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), "test_generator_helper.rb")
 
-class TestIphonerubyGenerator < Test::Unit::TestCase
+class TestRbIphoneTestGenerator < Test::Unit::TestCase
   include RubiGen::GeneratorTestHelper
 
   def setup
