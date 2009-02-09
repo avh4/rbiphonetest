@@ -1,4 +1,3 @@
-(in /Users/vsp/Projects/TheCooperative/vendor/rbiphonetest)
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
