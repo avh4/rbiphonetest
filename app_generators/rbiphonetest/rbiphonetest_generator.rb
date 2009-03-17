@@ -1,4 +1,4 @@
-class RbiphonetestGenerator < RubiGen::Base
+class RbIphoneTestGenerator < RubiGen::Base
 
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
@@ -6,14 +6,15 @@ class RbiphonetestGenerator < RubiGen::Base
   default_options :author => nil,
                   :test_framework => 'test_unit'
 
-  attr_reader :name
+  attr_reader :name, :module_name
   attr_reader :test_framework
 
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
     @destination_root = File.expand_path(args.shift)
-    @name = base_name
+    @name             = base_name.gsub("-", "_")
+    @module_name      = name.camelize
     extract_options
   end
 
@@ -24,7 +25,7 @@ class RbiphonetestGenerator < RubiGen::Base
       BASEDIRS.each { |path| m.directory path }
 
       # Create stubs
-      m.file_copy_each ["Rakefile"]
+      m.template_copy_each ["Rakefile"]
       m.file           "dot_autotest", ".autotest"
       
       # Selecting a test framework

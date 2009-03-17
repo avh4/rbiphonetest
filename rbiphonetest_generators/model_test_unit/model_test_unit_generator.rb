@@ -7,8 +7,8 @@ class ModelTestUnitGenerator < RubiGen::Base
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
-    @name = args.shift.underscore
-    @class_name = @name.camelcase
+    @name        = args.shift.underscore
+    @class_name  = @name.camelcase
     extract_options
   end
 
